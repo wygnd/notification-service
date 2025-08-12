@@ -1,16 +1,6 @@
-import {Injectable} from "@nestjs/common";
-import {Dialect} from "sequelize"
+import {Dialect} from "sequelize";
 
-
-@Injectable()
-export class ConfigService {
-
-	get sequelizeConfig() {
-		return config.database;
-	}
-}
-
-const config = {
+export default () => ({
 	database: {
 		dialect: 'postgres' as Dialect,
 		host: process.env.DB_HOST,
@@ -19,4 +9,4 @@ const config = {
 		password: process.env.DB_PASSWORD,
 		database: process.env.DB_NAME,
 	}
-}
+})

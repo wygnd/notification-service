@@ -1,12 +1,12 @@
 import {Sequelize} from "sequelize-typescript";
-import {ConfigService} from "../../common/config/database.config";
-import {NotificationModel} from "../notifications/entity/notification.entity";
+import {ConfigService} from "@nestjs/config"
+import {NotificationModel} from "../notifications/entities/notification.entity";
 
 export const databaseProviders = [
 	{
 		provide: "SEQUELIZE",
 		useFactory: async (configService: ConfigService) => {
-			const sequelize = new Sequelize(configService.sequelizeConfig);
+			const sequelize = new Sequelize(configService.get("database"));
 
 			sequelize.addModels([NotificationModel]);
 			await sequelize.sync();
