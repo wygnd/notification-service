@@ -36,3 +36,6 @@ export interface Notification {
 	updatedAt?: Date;
 }
 
+export enum NotificationMessage {
+	MESSAGE = "message",
+}

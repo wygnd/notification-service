@@ -1,4 +1,4 @@
-import {Notification, NotificationType} from "../interfaces/notification.interface";
+import {Notification, NotificationStatus, NotificationType} from "../interfaces/notification.interface";
 
 export class NotificationDto {
 	readonly notificationId: string;
@@ -13,6 +13,7 @@ export class NotificationDto {
 	readonly sentAt?: Date;
 	readonly deliveredAt?: Date;
 	readonly priority: number;
+	readonly status: NotificationStatus;
 
 	constructor(notification: Notification) {
 		this.notificationId = notification.notificationId;
@@ -27,5 +28,6 @@ export class NotificationDto {
 		this.sentAt = notification?.sentAt;
 		this.deliveredAt = notification?.deliveredAt;
 		this.priority = notification.priority;
+		this.status = notification.status;
 	}
 }

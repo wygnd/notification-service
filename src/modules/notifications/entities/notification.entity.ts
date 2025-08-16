@@ -1,9 +1,10 @@
 import {Table, Column, Model, PrimaryKey, DataType, Default} from "sequelize-typescript";
 import {DataTypes} from "sequelize";
 import {Notification, NotificationStatus, NotificationType} from "../interfaces/notification.interface";
+import {CreateNotificationDto} from "../dto/create-notification.dto";
 
 @Table({tableName: "notifications"})
-export class NotificationModel extends Model<Notification> {
+export class NotificationModel extends Model<Notification, CreateNotificationDto> {
 	@PrimaryKey
 	@Default(DataType.UUIDV4)
 	@Column({type: DataType.UUID})

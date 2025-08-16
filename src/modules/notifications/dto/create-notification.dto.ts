@@ -5,8 +5,9 @@ export class CreateNotificationDto {
 	@IsEnum(NotificationType, {message: 'Invalid notification type'})
 	type: NotificationType;
 
+	@IsOptional()
 	@IsEnum(NotificationStatus, {message: 'Invalid notification status'})
-	status: NotificationStatus;
+	status?: NotificationStatus;
 
 	@IsNotEmpty({ message: 'Field recipient is required' })
 	recipient: string;
