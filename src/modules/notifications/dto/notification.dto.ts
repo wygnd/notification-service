@@ -1,33 +1,34 @@
-import {Notification, NotificationStatus, NotificationType} from "../interfaces/notification.interface";
+import {NotificationStatus, NotificationType} from "../interfaces/notification.interface";
+import {NotificationModel} from "../entities/notification.entity";
 
 export class NotificationDto {
-	readonly notificationId: string;
-	readonly type: NotificationType;
-	readonly recipient: string;
-	readonly message: string;
-	readonly payload?: any;
-	readonly attempts: number;
-	readonly maxAttempts: number;
-	readonly lastError?: string;
-	readonly nextRetryAt?: Date;
-	readonly sentAt?: Date;
-	readonly deliveredAt?: Date;
-	readonly priority: number;
-	readonly status: NotificationStatus;
+	public notificationId: string;
+	public type: NotificationType;
+	public recipient: string;
+	public message: string;
+	public payload?: any;
+	public attempts: number;
+	public maxAttempts: number;
+	public lastError?: string;
+	public nextRetryAt?: Date;
+	public sentAt?: Date;
+	public deliveredAt?: Date;
+	public priority: number;
+	public status: NotificationStatus;
 
-	constructor(notification: Notification) {
-		this.notificationId = notification.notificationId;
-		this.type = notification.type;
-		this.recipient = notification.recipient;
-		this.message = notification.message;
-		this.payload = notification?.payload;
-		this.attempts = notification.attempts;
-		this.maxAttempts = notification.maxAttempts;
-		this.lastError = notification?.lastError;
-		this.nextRetryAt = notification?.nextRetryAt;
-		this.sentAt = notification?.sentAt;
-		this.deliveredAt = notification?.deliveredAt;
-		this.priority = notification.priority;
-		this.status = notification.status;
+	constructor(notification: NotificationModel) {
+		this.notificationId = notification.getDataValue("notificationId");
+		this.type = notification.getDataValue("type");
+		this.recipient = notification.getDataValue("recipient");
+		this.message = notification.getDataValue("message");
+		this.payload = notification.getDataValue("payload");
+		this.attempts = notification.getDataValue("attempts");
+		this.maxAttempts = notification.getDataValue("maxAttempts");
+		this.lastError = notification.getDataValue("lastError");
+		this.nextRetryAt = notification.getDataValue("nextRetryAt");
+		this.sentAt = notification.getDataValue("sentAt");
+		this.deliveredAt = notification.getDataValue("deliveredAt");
+		this.priority = notification.getDataValue("priority");
+		this.status = notification.getDataValue("status");
 	}
 }

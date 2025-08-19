@@ -1,6 +1,7 @@
 import {Inject, Injectable} from "@nestjs/common";
 import {ClientProxy} from "@nestjs/microservices";
 import {Message} from "../interfaces/message.interface";
+import {NotificationMessage} from "../interfaces/notification.interface";
 
 
 @Injectable()
@@ -11,8 +12,8 @@ export class NotificationProducer {
 		private readonly client: ClientProxy
 	) {}
 
-	sendMessage(pattern: string, data: Message) {
-		return this.client.emit(pattern, data);
+	async sendMessage(pattern: string, data: Message) {
+		await this.client.emit('create_notification', data);
 	}
 
 }

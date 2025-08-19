@@ -1,13 +1,15 @@
 import {Message} from "../interfaces/message.interface";
 import {Notification, NotificationType} from "../interfaces/notification.interface";
+import {NotificationModel} from "../entities/notification.entity";
+import {NotificationDto} from "./notification.dto";
 
 export class SendMessageNotificationDto implements Message{
-	readonly notificationId: string;
-	readonly type: NotificationType;
-	readonly recipient: string;
+	notificationId: string;
+	type: NotificationType;
+	recipient: string;
 
-	constructor(notification: Notification) {
-		this.notificationId = notification.notificationId
+	constructor(notification: NotificationDto) {
+		this.notificationId = notification.notificationId;
 		this.type = notification.type;
 		this.recipient = notification.recipient;
 	}

@@ -6,6 +6,9 @@ export default (): {rabbitmq: RmqOptions} => ({
 		options: {
 			urls: [process.env.RABBITMQ_URL ?? ""],
 			queue: process.env.RABBITMQ_QUEUE,
+			queueOptions: {
+				durable: true
+			}
 		}
 	}
 })

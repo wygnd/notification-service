@@ -4,10 +4,10 @@ import {Notification, NotificationStatus, NotificationType} from "../interfaces/
 import {CreateNotificationDto} from "../dto/create-notification.dto";
 
 @Table({tableName: "notifications"})
-export class NotificationModel extends Model<Notification, CreateNotificationDto> {
+export class NotificationModel extends Model<NotificationModel, CreateNotificationDto> {
 	@PrimaryKey
 	@Default(DataType.UUIDV4)
-	@Column({type: DataType.UUID})
+	@Column({type: DataType.UUIDV4})
 	notificationId: string;
 
 	@Column({type: DataType.ENUM(...Object.values(NotificationType)), allowNull: false})

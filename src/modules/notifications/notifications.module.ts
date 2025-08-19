@@ -17,7 +17,7 @@ import {ConfigService} from "@nestjs/config";
 		}
 	])],
 	controllers: [NotificationsController],
-	providers: [NotificationsService, ...notificationProviders, NotificationConsumer, NotificationProducer],
+	providers: [NotificationsService, ...notificationProviders, NotificationProducer, NotificationConsumer],
 	exports: []
 })
 

@@ -38,4 +38,5 @@ export interface Notification {
 
 export enum NotificationMessage {
 	MESSAGE = "message",
+	CREATE_NOTIFICATION = "create_notification"
 }
