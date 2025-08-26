@@ -10,7 +10,7 @@ import redisConfig from "./common/config/redis.config";
 		ConfigModule.forRoot({
 			isGlobal: true,
 			load: [databaseConfig, rabbitmqConfig, redisConfig]
-		}), NotificationsModule,
+		}), NotificationsModule
   ],
   controllers: [],
   providers: [],

@@ -22,5 +22,5 @@ export class CreateNotificationDto {
 
 	@IsOptional()
 	@IsDateString({}, {message: "scheduledAt muse be a valid ISO date string"})
-	scheduledAt: Date;
+	scheduledAt?: Date;
 }
