@@ -4,6 +4,7 @@ import databaseConfig from "./common/config/database.config";
 import {NotificationsModule} from "./modules/notifications/notifications.module";
 import rabbitmqConfig from "./common/config/rabbitmq.config";
 import redisConfig from "./common/config/redis.config";
+import {AppController} from "./app.controller";
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import redisConfig from "./common/config/redis.config";
 			load: [databaseConfig, rabbitmqConfig, redisConfig]
 		}), NotificationsModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}

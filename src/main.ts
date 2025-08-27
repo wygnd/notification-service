@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import {ValidationPipe} from "@nestjs/common";
 import {MicroserviceOptions, RmqOptions, RedisOptions} from "@nestjs/microservices";
 import {ConfigService} from "@nestjs/config";
+import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 
 async function bootstrap() {
 	const PORT = process.env.PORT ?? 3000;
@@ -22,6 +23,15 @@ async function bootstrap() {
 	app.connectMicroservice<MicroserviceOptions>(redisConfig);
 
 	await app.startAllMicroservices();
+	const documentationConfig = new DocumentBuilder()
+		.setTitle("Notification Service")
+		.setDescription("Service receive tasks and sending in Rabbit queue handling and save to redis.")
+		.setVersion("1.0")
+		.addTag("notifications")
+		.build();
+
+	SwaggerModule.setup("/api", app, () =>  SwaggerModule.createDocument(app, documentationConfig))
+
   await app.listen(PORT);
 	console.log(`Server started on port: ${PORT}: http://localhost:${PORT}`);
 }
