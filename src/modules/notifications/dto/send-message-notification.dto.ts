@@ -1,6 +1,5 @@
 import {Message} from "../interfaces/message.interface";
-import {Notification, NotificationType} from "../interfaces/notification.interface";
-import {NotificationModel} from "../entities/notification.entity";
+import {NotificationType} from "../interfaces/notification.interface";
 import {NotificationDto} from "./notification.dto";
 
 export class SendMessageNotificationDto implements Message{
